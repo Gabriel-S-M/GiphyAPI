@@ -1,0 +1,7 @@
+{
+  "name": "giphy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
