@@ -1,13 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>giphDetail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-img src="https://developers.giphy.com/branch/master/static/header-logo-0fec0225d189bc0eae27dac3e3770582.gif" class="logo"></ion-img>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">giphDetail</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card *ngIf="gif">
+    <ion-card-header>
+      <ion-card-title>{{gif.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="gif.images.original.url"></ion-img>
+      <p>URL ORIGINAL: <a [href]="gif.url" target="_blank"></a></p>
+      <p>Data de Criação: {{gif.import_datetime}}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

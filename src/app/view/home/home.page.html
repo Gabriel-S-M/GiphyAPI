@@ -1,11 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      <ion-img src="https://developers.giphy.com/branch/master/static/header-logo-0fec0225d189bc0eae27dac3e3770582.gif" class="logo"></ion-img>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="onSearch()" debounce="500" placeholder="Buscar GIFs" showClearButton="focus"></ion-searchbar>
+  <ion-grid>
+    <ion-row class="ion-no-padding">
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let gif of filteredGifs">
+        <ion-item (click)="goToGifDetails(gif)">
+          <ion-img [src]="gif.images.fixed_height.url" class="gif-img"></ion-img>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="loadMoreGifs()">Carregar Mais</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>
